@@ -10,4 +10,10 @@ public class Cli {
         name = sc.nextLine();
         System.out.println("Hello, " + name + "!");
     }
+    public static void sayBye() {
+        System.out.println("Let's try again, " + name + "!");
+    }
+    public static void winGame() {
+        System.out.println("Congratulations, " + name + "!");
+    }
 }
