@@ -1,68 +1,51 @@
 package hexlet.code.Games;
 
-import hexlet.code.Cli;
-
-import java.util.Random;
-import java.util.Scanner;
+import hexlet.code.Engine;
+import hexlet.code.Utils;
 
 public class Calculator {
-    public static void gameCalc() {
-        Scanner scAnswer = new Scanner(System.in);
-        String wrongAnswer = "' is wrong answer ;(. Correct answer was '";
-        int howMuchCorrect = 0;
-        final int maxAnswers = 3;
-        final int borderForRandom = 100;
-        final int endCircle = 4;
-        char[] operation = {'+', '-', '*'};
-        System.out.println("What is the result of the expression?");
-        while (howMuchCorrect < maxAnswers) {
-            int firstValue = (int) (Math.random() * borderForRandom);
-            int secondValue = (int) (Math.random() * borderForRandom);
-            char randomOperation = operation[new Random().nextInt(operation.length)];
-            System.out.println("Question: " + firstValue + " " + randomOperation + " " + secondValue);
-            System.out.print("Your answer: ");
-            int answer = scAnswer.nextInt();
-            switch (randomOperation) {
-                case '*':
-                    int correctAnswerIncr = firstValue * secondValue;
-                    if (answer == correctAnswerIncr) {
-                        System.out.println("Correct!");
-                        howMuchCorrect++;
-                    } else {
-                        System.out.println("'" + answer + wrongAnswer + correctAnswerIncr + "'.");
-                        Cli.sayBye();
-                        howMuchCorrect = endCircle;
-                    }
-                    break;
-                case '+':
-                    int correctAnswerSum = firstValue + secondValue;
-                    if (answer == correctAnswerSum) {
-                        System.out.println("Correct!");
-                        howMuchCorrect++;
-                    } else {
-                        System.out.println("'" + answer + "'" + wrongAnswer + correctAnswerSum + "'.");
-                        Cli.sayBye();
-                        howMuchCorrect = endCircle;
-                    }
-                    break;
-                case '-':
-                    int correctAnswerMinus = firstValue - secondValue;
-                    if (answer == correctAnswerMinus) {
-                        System.out.println("Correct!");
-                        howMuchCorrect++;
-                    } else {
-                        System.out.println("'" + answer + "'" + wrongAnswer + correctAnswerMinus + "'.");
-                        Cli.sayBye();
-                        howMuchCorrect = endCircle;
-                    }
-                    break;
-                default:
-                    howMuchCorrect = endCircle;
-                    break;
-            }
+    public static final String START_TEXT = "What is the result of the expression?";
+    private static char[] operationArray = {'+', '-', '*'};
+
+    public static void playGame() {
+        Engine.runGame(START_TEXT, getGameData());
+    }
+
+    private static char getOperation() {
+        return operationArray[Utils.getRandom(Utils.RANGE_LIMIT_0, operationArray.length -  1)];
+    }
+
+    private static int calculate(int number1, int number2, char operation) {
+        switch (operation) {
+            case '+':
+                return number1 + number2;
+            case '-':
+                return number1 - number2;
+            case '/':
+                return number1 / number2;
+            case '*':
+                return number1 * number2;
+            default:
+                return Integer.MIN_VALUE;
         }
-        if (howMuchCorrect == maxAnswers) {
-            Cli.winGame();
+    }
+
+    private static String[][] getGameData() {
+        String[][] gameData = new String[Engine.COUNT_ROUND][2];
+        for (int round = 0; round < Engine.COUNT_ROUND; round++) {
+            gameData[round] = generateRoundData();
         }
+        return gameData;
+    }
+
+    private static String[] generateRoundData() {
+        String[] roundData = new String[2];
+        int number1 = Utils.getRandom(Utils.RANGE_LIMIT_0, Utils.RANGE_LIMIT_100);
+        int number2 = Utils.getRandom(Utils.RANGE_LIMIT_0, Utils.RANGE_LIMIT_100);
+        char operation = getOperation();
+        int trueAnswer = calculate(number1, number2, operation);
+        roundData[0] = Integer.toString(number1) + ' ' + operation + ' ' + number2;
+        roundData[1] = Integer.toString(trueAnswer);
+        return roundData;
     }
 }

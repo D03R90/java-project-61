@@ -3,34 +3,43 @@ package hexlet.code;
 import hexlet.code.Games.*;
 import java.util.Scanner;
 public class App {
+    public static final int GREET_NUM = 1;
+    public static final int EVEN_NUM = 2;
+    public static final int CALC_NUM = 3;
+    public static final int GCD_NUM = 4;
+    public static final int PROGRESSION_NUM = 5;
+    public static final String MENU_TEXT = "Please enter the game number and press Enter.";
+    public static final String MENU_GAMES = GREET_NUM + " - Greet\n"
+            + EVEN_NUM + " - Even\n"
+            + CALC_NUM + " - Calc\n"
+            + GCD_NUM + " - GCD\n"
+            + PROGRESSION_NUM + " - Progression\n"
+            + "0 - Exit\nYour choice: ";
+
     public static void main(String[] args) {
-      StringBuilder allGames = new StringBuilder();
-        System.out.println("Please enter the game number and press Enter.");
-        allGames.append("1 - Greet");
-        allGames.append("\n" + "2 - Even");
-        allGames.append("\n" + "3 - Calc");
-        allGames.append("\n" + "4 - GDC");
-        allGames.append("\n" + "0 - Exit");
-        System.out.println(allGames.toString());
-        System.out.print("Your choice: ");
-        Scanner scStart = new Scanner(System.in);
-        int gameNumber = scStart.nextInt();
-        switch (gameNumber) {
-            case 0:
+        Scanner mainScanner = new Scanner(System.in);
+        System.out.println(MENU_TEXT);
+        System.out.print(MENU_GAMES);
+        playGame(mainScanner);
+        mainScanner.close();
+    }
+
+    public static void playGame(Scanner mainScanner) {
+        switch (mainScanner.nextInt()) {
+            case GREET_NUM:
+                Cli.welcome();
                 break;
-            case 1:
-                Cli.sayHello();
+            case EVEN_NUM:
+                Even.playGame();
                 break;
-            case 2:
-                Cli.sayHello();
-                Even.gameEven();
-            case 3:
-                Cli.sayHello();
-                Calculator.gameCalc();
+            case CALC_NUM:
+                Calculator.playGame();
                 break;
-            case 4:
-                Cli.sayHello();
-                GCD.gcdGame();
+            case GCD_NUM:
+                GCD.playGame();
+                break;
+            case PROGRESSION_NUM:
+                Progression.playGame();
                 break;
             default:
                 break;

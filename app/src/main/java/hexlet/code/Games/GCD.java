@@ -1,39 +1,40 @@
 package hexlet.code.Games;
 
-import hexlet.code.Cli;
-import java.util.Scanner;
+import hexlet.code.Engine;
+import hexlet.code.Utils;
 
 public class GCD {
-    public static void gcdGame() {
-        Scanner scAnswer = new Scanner(System.in);
-        String wrongAnswer = "' is wrong answer ;(. Correct answer was '";
-        int howMuchCorrect = 0;
-        final int maxAnswers = 3;
-        final int borderForRandom = 100;
-        System.out.println("Find the greatest common divisor of given numbers.");
-        while (howMuchCorrect < maxAnswers) {
-            int minDel = 0;
-            int firstNum = (int) (Math.random() * borderForRandom);
-            int secondNum = (int) (Math.random() * borderForRandom);
-            System.out.println("Question: " + firstNum + " " + secondNum);
-            System.out.print("Your answer: ");
-            while (secondNum != 0) {
-                minDel = secondNum;
-                secondNum = firstNum % secondNum;
-                firstNum = minDel;
-            }
-            int answer = scAnswer.nextInt();
-            if (answer == minDel) {
-                System.out.println("Correct!");
-                howMuchCorrect++;
-            } else {
-                System.out.println("'" + answer + wrongAnswer + minDel + "'.");
-                Cli.sayBye();
-                break;
+    public static final String START_TEXT = "Find the greatest common divisor of given numbers.";
+
+    public static void playGame() {
+        Engine.runGame(START_TEXT, getGameData());
+    }
+
+    private static String[][] getGameData() {
+        String[][] gameData = new String[Engine.COUNT_ROUND][2];
+        for (int round = 0; round < Engine.COUNT_ROUND; round++) {
+            gameData[round] = generateRoundData();
+        }
+        return gameData;
+    }
+
+    private static String[] generateRoundData() {
+        String[] roundData = new String[2];
+        int number1 = Utils.getRandom(Utils.RANGE_LIMIT_1, Utils.RANGE_LIMIT_100);
+        int number2 = Utils.getRandom(Utils.RANGE_LIMIT_1, Utils.RANGE_LIMIT_100);
+        roundData[0] = Integer.toString(number1) + ' ' + number2;
+        roundData[1] = Integer.toString(calcGCD(number1, number2));
+        return roundData;
+    }
+
+    private static int calcGCD(int number1, int number2) {
+        int gcd = 0;
+        int numberMin = Math.min(number1, number2);
+        for (int i = 1; i <= numberMin; i++) {
+            if (number1 % i == 0 && number2 % i == 0) {
+                gcd = i;
             }
         }
-        if (howMuchCorrect == maxAnswers) {
-            Cli.winGame();
-        }
+        return gcd;
     }
 }
