@@ -8,12 +8,14 @@ public class App {
     public static final int CALC_NUM = 3;
     public static final int GCD_NUM = 4;
     public static final int PROGRESSION_NUM = 5;
+    public static final int PRIME_NUM = 6;
     public static final String MENU_TEXT = "Please enter the game number and press Enter.";
     public static final String MENU_GAMES = GREET_NUM + " - Greet\n"
             + EVEN_NUM + " - Even\n"
             + CALC_NUM + " - Calc\n"
             + GCD_NUM + " - GCD\n"
             + PROGRESSION_NUM + " - Progression\n"
+            + PRIME_NUM + " - Prime\n"
             + "0 - Exit\nYour choice: ";
 
     public static void main(String[] args) {
@@ -40,6 +42,9 @@ public class App {
                 break;
             case PROGRESSION_NUM:
                 Progression.playGame();
+                break;
+            case PRIME_NUM:
+                Prime.playGame();
                 break;
             default:
                 break;
