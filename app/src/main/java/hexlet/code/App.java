@@ -9,6 +9,7 @@ public class App {
         allGames.append("1 - Greet");
         allGames.append("\n" + "2 - Even");
         allGames.append("\n" + "3 - Calc");
+        allGames.append("\n" + "4 - GDC");
         allGames.append("\n" + "0 - Exit");
         System.out.println(allGames.toString());
         System.out.print("Your choice: ");
@@ -26,6 +27,10 @@ public class App {
             case 3:
                 Cli.sayHello();
                 Calculator.gameCalc();
+                break;
+            case 4:
+                Cli.sayHello();
+                GCD.gcdGame();
                 break;
             default:
                 break;
