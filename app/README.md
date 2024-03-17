@@ -1,2 +1,10 @@
-### Hexlet tests and linter status:
-[![Actions Status](https://github.com/D03R90/java-project-61/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/D03R90/java-project-61/actions)
+### Hexlet tests and linter status:![Progression_Success.png](Progression_Success.png)
+![Progression_Error.png](Progression_Error.png)
+![Prime_Success.png](Prime_Success.png)
+![Prime_Error.png](Prime_Error.png)
+![GCD_Success.png](GCD_Success.png)
+![GCD_Error.png](GCD_Error.png)
+![Even_Success.png](Even_Success.png)
+![Even_Error.png](Even_Error.png)
+![Calc_Success.png](Calc_Success.png)
+![Calc_Error.png](Calc_Error.png)
