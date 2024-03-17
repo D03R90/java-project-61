@@ -1,4 +1,5 @@
-### Hexlet tests and linter status:![Progression_Success.png](Progression_Success.png)
+### Hexlet tests and linter status:
+![Progression_Success.png](Progression_Success.png)
 ![Progression_Error.png](Progression_Error.png)
 ![Prime_Success.png](Prime_Success.png)
 ![Prime_Error.png](Prime_Error.png)
