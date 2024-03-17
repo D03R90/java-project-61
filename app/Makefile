@@ -5,8 +5,8 @@ build: ./gradlew clean build
 #	./gradlew clean install checkstyleMain
 run-dist:
 	./build/install/app/bin/app
-#run:
-#	./gradlew run
+run:
+	./gradlew run
 #lint:
 #	./gradlew checkstyleMain
 #check-updates:
