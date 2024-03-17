@@ -3,7 +3,7 @@ package hexlet.code.Games;
 import hexlet.code.Engine;
 import hexlet.code.Utils;
 
-public class Calculator {
+public class Calc {
     public static final String START_TEXT = "What is the result of the expression?";
     private static char[] operationArray = {'+', '-', '*'};
 

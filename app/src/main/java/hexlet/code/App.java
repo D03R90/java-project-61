@@ -1,6 +1,6 @@
 package hexlet.code;
 
-import hexlet.code.Games.Calculator;
+import hexlet.code.Games.Calc;
 import hexlet.code.Games.Even;
 import hexlet.code.Games.GCD;
 import hexlet.code.Games.Prime;
@@ -40,7 +40,7 @@ public class App {
                 Even.playGame();
                 break;
             case CALC_NUM:
-                Calculator.playGame();
+                Calc.playGame();
                 break;
             case GCD_NUM:
                 GCD.playGame();
