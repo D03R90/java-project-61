@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Cli {
     public static final String WELCOME_TEXT = "Welcome to the Brain Games!";
-    public static final String WELCOME_QUESTION = "May I have your name? ";
+    public static final String WELCOME_QUESTION = "May I have your name?";
 
     public static void welcome() {
         Scanner cliScanner = new Scanner(System.in);
