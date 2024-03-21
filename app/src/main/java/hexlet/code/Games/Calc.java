@@ -5,7 +5,7 @@ import hexlet.code.Utils;
 
 public class Calc {
     public static final String RULES = "What is the result of the expression?";
-    private static final char[] operationArray = {'+', '-', '*'};
+    private static char[] operationArray = {'+', '-', '*'};
 
     public static void playGame() {
         Engine.runGame(RULES, getGameData());
