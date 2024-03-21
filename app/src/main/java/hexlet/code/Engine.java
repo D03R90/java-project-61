@@ -18,7 +18,8 @@ public class Engine {
             String gamerAnswer = engineScanner.nextLine();
 
             if (!gamerAnswer.equals(gameQuestionAnswer[1])) {
-                System.out.println("'" + gamerAnswer + "' is wrong answer ;(. Correct answer was '" + gameQuestionAnswer[1] + "'.");
+                System.out.print("'" + gamerAnswer + "' is wrong answer ;(. ");
+                System.out.println("Correct answer was '" + gameQuestionAnswer[1] + "'.");
                 System.out.println("Let's try again, " + gamerName + "!");
                 engineScanner.close();
                 return;
