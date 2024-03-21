@@ -5,7 +5,7 @@ import hexlet.code.Utils;
 
 public class Calc {
     public static final String RULES = "What is the result of the expression?";
-    private static char[] operationArray = {'+', '-', '*'};
+    private static final char[] operationArray = {'+', '-', '*'};
 
     public static void playGame() {
         Engine.runGame(RULES, getGameData());
@@ -16,16 +16,12 @@ public class Calc {
     }
 
     private static int calculate(int number1, int number2, char operation) {
-        switch (operation) {
-            case '+':
-                return number1 + number2;
-            case '-':
-                return number1 - number2;
-            case '*':
-                return number1 * number2;
-            default:
-                return Integer.MIN_VALUE;
-        }
+        return switch (operation) {
+            case '+' -> number1 + number2;
+            case '-' -> number1 - number2;
+            case '*' -> number1 * number2;
+            default -> throw new RuntimeException("Unsupported operation: " + operation);
+        };
     }
 
     private static String[][] getGameData() {
