@@ -3,12 +3,12 @@ package hexlet.code.Games;
 import hexlet.code.Engine;
 import hexlet.code.Utils;
 public class Prime {
-    public static final String START_TEXT = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
+    public static final String RULES = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
     public static final String ANSWER_YES = "yes";
     public static final String ANSWER_NO = "no";
 
     public static void playGame() {
-        Engine.runGame(START_TEXT, getGameData());
+        Engine.runGame(RULES, getGameData());
     }
 
     private static String[][] getGameData() {

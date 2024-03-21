@@ -4,11 +4,11 @@ import hexlet.code.Engine;
 import hexlet.code.Utils;
 
 public class Calc {
-    public static final String START_TEXT = "What is the result of the expression?";
+    public static final String RULES = "What is the result of the expression?";
     private static char[] operationArray = {'+', '-', '*'};
 
     public static void playGame() {
-        Engine.runGame(START_TEXT, getGameData());
+        Engine.runGame(RULES, getGameData());
     }
 
     private static char getOperation() {
@@ -21,8 +21,6 @@ public class Calc {
                 return number1 + number2;
             case '-':
                 return number1 - number2;
-            case '/':
-                return number1 / number2;
             case '*':
                 return number1 * number2;
             default:
