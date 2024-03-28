@@ -28,3 +28,4 @@ public class Gcd {
         Engine.game(numbers, getQuestion());
     }
 }
+
