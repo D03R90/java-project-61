@@ -1,45 +1,33 @@
-package hexlet.code.Games;
+package hexlet.code.games;
 
 import hexlet.code.Engine;
 import hexlet.code.Utils;
 
 public class Calc {
-    public static final String RULES = "What is the result of the expression?";
-    private static char[] operationArray = {'+', '-', '*'};
-
-    public static void playGame() {
-        Engine.runGame(RULES, getGameData());
-    }
-
-    private static char getOperation() {
-        return operationArray[Utils.getRandom(Utils.RANGE_LIMIT_0, operationArray.length -  1)];
-    }
-
-    private static int calculate(int number1, int number2, char operation) {
+    public static int calcResult(int firstNumber, int secondNumber, char operation) {
         return switch (operation) {
-            case '+' -> number1 + number2;
-            case '-' -> number1 - number2;
-            case '*' -> number1 * number2;
-            default -> throw new RuntimeException("Unsupported operation: " + operation);
+            case '+' -> firstNumber + secondNumber;
+            case '-' -> firstNumber - secondNumber;
+            case '*' -> firstNumber * secondNumber;
+            default -> 0;
         };
     }
 
-    private static String[][] getGameData() {
-        String[][] gameData = new String[Engine.COUNT_ROUND][2];
-        for (int round = 0; round < Engine.COUNT_ROUND; round++) {
-            gameData[round] = generateRoundData();
-        }
-        return gameData;
+    public static String getQuestion() {
+        return "What is the result of the expression?";
     }
 
-    private static String[] generateRoundData() {
-        String[] roundData = new String[2];
-        int number1 = Utils.getRandom(Utils.RANGE_LIMIT_0, Utils.RANGE_LIMIT_100);
-        int number2 = Utils.getRandom(Utils.RANGE_LIMIT_0, Utils.RANGE_LIMIT_100);
-        char operation = getOperation();
-        int trueAnswer = calculate(number1, number2, operation);
-        roundData[0] = Integer.toString(number1) + ' ' + operation + ' ' + number2;
-        roundData[1] = Integer.toString(trueAnswer);
-        return roundData;
+    public static void gameCalc() {
+        String[][] numbers = new String[Engine.GAME_LENGTH][2];
+        final char[] operators = {'+', '-', '*'};
+        for (var number : numbers) {
+            int operationIndex = Utils.randomNumber(0, operators.length);
+            var operator = operators[operationIndex];
+            int firstNumber = Utils.randomNumber(Utils.MIN_GENERATE, Utils.MAX_GENERATE);
+            int secondNumber = Utils.randomNumber(Utils.MIN_GENERATE, Utils.MAX_GENERATE);
+            number[0] = firstNumber + " " + operator + " " + secondNumber;
+            number[1] = Integer.toString(calcResult(firstNumber, secondNumber, operators[operationIndex]));
+        }
+        Engine.game(numbers, getQuestion());
     }
 }

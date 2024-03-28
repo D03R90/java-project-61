@@ -1,58 +1,57 @@
 package hexlet.code;
-
-import hexlet.code.Games.Calc;
-import hexlet.code.Games.Even;
-import hexlet.code.Games.GCD;
-import hexlet.code.Games.Prime;
-import hexlet.code.Games.Progression;
+import hexlet.code.Games.Gcd;
+import hexlet.code.games.Calc;
+import hexlet.code.games.Even;
+import hexlet.code.games.Prime;
+import hexlet.code.games.Progression;
 
 import java.util.Scanner;
+
 public class App {
-    public static final int GREET_NUM = 1;
-    public static final int EVEN_NUM = 2;
-    public static final int CALC_NUM = 3;
-    public static final int GCD_NUM = 4;
-    public static final int PROGRESSION_NUM = 5;
-    public static final int PRIME_NUM = 6;
-    public static final String MENU_TEXT = "Please enter the game number and press Enter.";
-    public static final String MENU_GAMES = GREET_NUM + " - Greet\n"
-            + EVEN_NUM + " - Even\n"
-            + CALC_NUM + " - Calc\n"
-            + GCD_NUM + " - GCD\n"
-            + PROGRESSION_NUM + " - Progression\n"
-            + PRIME_NUM + " - Prime\n"
-            + "0 - Exit\nYour choice: ";
+    private static final int GREET = 1;
+    private static final int EVEN = 2;
+    private static final int CALC = 3;
+    private static final int GCD = 4;
+    private static final int PROGRESSION = 5;
+    private static final int PRIME = 6;
+
 
     public static void main(String[] args) {
-        Scanner mainScanner = new Scanner(System.in);
-        System.out.println(MENU_TEXT);
-        System.out.print(MENU_GAMES);
-        playGame(mainScanner);
-        mainScanner.close();
-    }
-
-    public static void playGame(Scanner mainScanner) {
-        switch (mainScanner.nextInt()) {
-            case GREET_NUM:
-                Cli.welcome();
+        Scanner game = new Scanner(System.in);
+        System.out.println("Please enter the game and press Enter.");
+        System.out.println("1 - Greet");
+        System.out.println("2 - Even");
+        System.out.println("3 - Calc");
+        System.out.println("4 - GCD");
+        System.out.println("5 - Progression");
+        System.out.println("6 - Prime");
+        System.out.println("0 - Exit");
+        int numberGame = game.nextInt();
+        System.out.println("Your choice: " + numberGame);
+        switch (numberGame) {
+            case GREET:
+                System.out.println("Welcome to the Brain Games!");
+                Cli.cli();
                 break;
-            case EVEN_NUM:
-                Even.playGame();
+            case EVEN:
+                Even.gameIsEven();
                 break;
-            case CALC_NUM:
-                Calc.playGame();
+            case CALC:
+                Calc.gameCalc();
                 break;
-            case GCD_NUM:
-                GCD.playGame();
+            case GCD:
+                Gcd.gameGcd();
                 break;
-            case PROGRESSION_NUM:
-                Progression.playGame();
+            case PROGRESSION:
+                Progression.gameProgression();
                 break;
-            case PRIME_NUM:
-                Prime.playGame();
+            case PRIME:
+                Prime.gamePrime();
+                break;
+            case 0:
                 break;
             default:
-                break;
+                throw new RuntimeException("Unknown input: " + numberGame);
         }
     }
 }

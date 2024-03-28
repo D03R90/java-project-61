@@ -2,16 +2,10 @@ package hexlet.code;
 import java.util.Scanner;
 
 public class Cli {
-    public static final String WELCOME_TEXT = "Welcome to the Brain Games!";
-    public static final String WELCOME_QUESTION = "May I have your name? ";
-
-    public static void welcome() {
-        Scanner cliScanner = new Scanner(System.in);
-        String gamerName = "";
-        System.out.println(WELCOME_TEXT);
-        System.out.print(WELCOME_QUESTION);
-        gamerName = cliScanner.nextLine();
-        System.out.println("Hello, " + gamerName + "!");
-        cliScanner.close();
+    public static void cli() {
+        System.out.println("May I have your name? ");
+        Scanner scanner = new Scanner(System.in);
+        String userName = scanner.nextLine();
+        System.out.println("Hello, " + userName + "!");
     }
 }
