@@ -2,48 +2,43 @@ package hexlet.code.Games;
 
 import hexlet.code.Engine;
 import hexlet.code.Utils;
+
 public class Progression {
-    public static final String START_TEXT = "What number is missing in the progression?";
-    public static final int ARRAY_LENGTH = 10;
+    private static final int MIN_PROGRESS_LENGTH = 6;
+    private static final int MAX_PROGRESS_LENGTH = 15;
 
-    public static void playGame() {
-        Engine.runGame(START_TEXT, getGameData());
+
+    public static String playGame() {
+        return "What number is missing in the progression?";
     }
+    public static void gameProgression() {
+        String[][] numbers = new String[Engine.GAME_LENGTH][2];
+        for (var number : numbers) {
 
-    private static String getQuestion(int[] array, int skipNumber) {
-        StringBuilder progression = new StringBuilder();
-        for (int i = 0; i < ARRAY_LENGTH; i++) {
-            if (i > 0) {
-                progression = progression.append(" ");
+            int[] progression = new int[Utils.getRandom(MIN_PROGRESS_LENGTH,
+                    MAX_PROGRESS_LENGTH)];
+            int firstNumber = Utils.getRandom(Utils.MIN_GENERATE, Utils.MAX_GENERATE);
+            int progressionNumber = Utils.getRandom(Utils.MIN_GENERATE, Utils.MAX_GENERATE);
+            progression[0] = firstNumber;
+
+            for (var j = 1; j < progression.length; j++) {
+                progression[j] = progression[j - 1] + progressionNumber;
             }
-            if (i == skipNumber) {
-                progression = progression.append("..");
-            } else {
-                progression = progression.append(array[i]);
+
+            int numberMissed = Utils.getRandom(0, progression.length - 1);
+            int correctNumber = progression[numberMissed];
+            String[] progressionString = new String[progression.length];
+
+            for (int l = 0; l < progressionString.length; l++) {
+                progressionString[l] = String.valueOf(progression[l]);
             }
-        }
-        return progression.toString();
-    }
 
-    private static String[][] getGameData() {
-        String[][] gameData = new String[Engine.COUNT_ROUND][2];
-        for (int round = 0; round < Engine.COUNT_ROUND; round++) {
-            gameData[round] = generateRoundData();
+            progressionString[numberMissed] = "..";
+            String progressionOutput = String.join(", ", progressionString);
+            progressionOutput = progressionOutput.replace(",", "");
+            number[0] = progressionOutput;
+            number[1] = Integer.toString(correctNumber);
         }
-        return gameData;
-    }
-
-    private static String[] generateRoundData() {
-        String[] roundData = new String[2];
-        int differenceValue = Utils.getRandom(Utils.RANGE_LIMIT_0, Utils.RANGE_LIMIT_10);
-        int skipArrayIndex = Utils.getRandom(Utils.RANGE_LIMIT_0, ARRAY_LENGTH - 1);
-        int[] array = new int[ARRAY_LENGTH];
-        array[0] = Utils.getRandom(Utils.RANGE_LIMIT_0, Utils.RANGE_LIMIT_100);
-        for (int i = 1; i < ARRAY_LENGTH; i++) {
-            array[i] = array[i - 1] + differenceValue;
-        }
-        roundData[0] = getQuestion(array, skipArrayIndex);
-        roundData[1] = Integer.toString(array[skipArrayIndex]);
-        return roundData;
+        Engine.runGame(playGame(), numbers);
     }
 }

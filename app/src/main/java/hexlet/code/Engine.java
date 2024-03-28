@@ -30,4 +30,5 @@ public class Engine {
         System.out.println("Congratulations, " + gamerName + "!");
         engineScanner.close();
     }
+    public static final int GAME_LENGTH = 3;
 }
