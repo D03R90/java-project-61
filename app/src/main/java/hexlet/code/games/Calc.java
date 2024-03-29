@@ -31,4 +31,3 @@ public class Calc {
         Engine.game(numbers, getQuestion());
     }
 }
-// END

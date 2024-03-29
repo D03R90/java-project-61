@@ -32,4 +32,3 @@ public class Prime {
         Engine.game(numbers, getQuestion());
     }
 }
-// END
