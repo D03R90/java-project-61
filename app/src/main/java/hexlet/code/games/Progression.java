@@ -42,3 +42,4 @@ public class Progression {
         Engine.game(numbers, getQuestion());
     }
 }
+// END
