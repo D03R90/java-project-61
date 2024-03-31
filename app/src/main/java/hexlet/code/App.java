@@ -31,23 +31,17 @@ public class App {
         switch (numberGame) {
             case GREET:
                 System.out.println("Welcome to the Brain Games!");
-                Cli.cli();
-                break;
+                Cli.cli(); break;
             case EVEN:
-                Even.gameIsEven();
-                break;
+                Even.game(); break;
             case CALC:
-                Calc.gameCalc();
-                break;
+                Calc.game(); break;
             case GCD:
-                Gcd.gameGcd();
-                break;
+                Gcd.game(); break;
             case PROGRESSION:
-                Progression.gameProgression();
-                break;
+                Progression.game(); break;
             case PRIME:
-                Prime.gamePrime();
-                break;
+                Prime.game(); break;
             case 0:
                 break;
             default:

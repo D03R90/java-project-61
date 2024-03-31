@@ -1,7 +1,7 @@
 package hexlet.code;
 import java.util.Scanner;
 public class Engine {
-
+    public static final int GAME_LENGTH = 3;
     public static void game(String[][] numbers, String question) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to the Brain Games!");
@@ -20,13 +20,11 @@ public class Engine {
             } else {
                 System.out.println(answer + " is wrong answer ;(. Correct answer was " + number[1]);
                 System.out.println("Let's try again, " + userName + "!");
-                System.exit(0);
+                return;
             }
         }
         System.out.println("Congratulations, " + userName + "!");
         scanner.close();
     }
-
-    public static final int GAME_LENGTH = 3;
 
 }

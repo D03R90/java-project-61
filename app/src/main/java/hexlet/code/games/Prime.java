@@ -4,9 +4,9 @@ import hexlet.code.Engine;
 import hexlet.code.Utils;
 
 public class Prime {
-
+    private static final String RULES = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
     public static String getQuestion() {
-        return "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
+        return RULES;
     }
     public static Boolean isPrime(int number) {
         if (number <= 1) {
@@ -19,15 +19,11 @@ public class Prime {
         }
         return Boolean.TRUE;
     }
-    public static void gamePrime() {
+    public static void game() {
         String[][] numbers = new String[Engine.GAME_LENGTH][2];
         for (var number : numbers) {
-            number[0] = Integer.toString(Utils.randomNumber(Utils.MIN_GENERATE, Utils.MAX_GENERATE));
-            if (isPrime(Integer.parseInt(number[0])) == Boolean.TRUE) {
-                number[1] = "yes";
-            } else {
-                number[1] = "no";
-            }
+            number[0] = String.valueOf(Utils.randomNumber(Utils.MIN_GENERATE, Utils.MAX_GENERATE));
+            number[1] = isPrime(Integer.parseInt(number[0])) ? "yes" : "no";
         }
         Engine.game(numbers, getQuestion());
     }
