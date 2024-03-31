@@ -15,7 +15,7 @@ public class Gcd {
 
     public static String getQuestion() {
         return "Find the greatest common divisor of given numbers.";
-    }
+    }       //Find the greatest common divisor of given numbers
 
     public static void gameGcd() {
         String[][] numbers = new String[Engine.GAME_LENGTH][2];
