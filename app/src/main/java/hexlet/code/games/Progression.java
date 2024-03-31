@@ -6,7 +6,7 @@ import hexlet.code.Utils;
 public class Progression {
     private static final int MIN_PROGRESS_LENGTH = 6;
     private static final int MAX_PROGRESS_LENGTH = 15;
-    private static final String RULES = "What number is missing in the progression?";
+    private static final String RULES = "What number is missing in the progression?";  //
     
     public static String getQuestion() {
         return RULES;
